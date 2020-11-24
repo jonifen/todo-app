@@ -1,11 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TasksContext from "../contexts/tasks-context";
-import { editTaskInList } from "../actions/tasks-actions";
+import { editTaskInList, completeTaskInList, deleteTaskFromList } from "../actions/tasks-actions";
 
 const Task = ({ taskKey }) => {
   const [tasks, dispatch] = useContext(TasksContext);
   const [editMode, setEditMode] = useState(false);
   const [task, setTask] = useState(tasks[taskKey]);
+
+  useEffect(() => {
+    setTask(tasks[taskKey]);
+  }, [tasks]);
 
   const onChangeValueEvent = (event) => {
     setTask({
@@ -24,9 +28,11 @@ const Task = ({ taskKey }) => {
     setEditMode(false);
   };
 
+  const completedClassName = task.completed ? "completed" : "";
+
   if (editMode) {
     return (
-      <div data-testid="task-edit">
+      <div data-testid="task-edit" className={completedClassName}>
         <input
           data-testid="task-edit-input"
           type="text"
@@ -43,13 +49,14 @@ const Task = ({ taskKey }) => {
   }
 
   return (
-    <div data-testid="task">
+    <div data-testid="task" className={completedClassName}>
       <span data-testid="task-label">
         {task.task}
       </span>
       <div className="icon-container">
+        <span data-testid="task-complete" onClick={() => { dispatch(completeTaskInList(taskKey)); }}>complete</span>
         <span data-testid="task-edit" onClick={() => { setEditMode(true); }}>edit</span>
-        <span data-testid="task-delete" onClick={() => { dispatch({ type: "delete", key: taskKey }); }}>delete</span>
+        <span data-testid="task-delete" onClick={() => { dispatch(deleteTaskFromList(taskKey)); }}>delete</span>
       </div>
     </div>
   );

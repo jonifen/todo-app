@@ -7,25 +7,30 @@ const state = {
   "a": {
     task: "Test the task component",
     completed: false
+  },
+  "b": {
+    task: "Test a completed task",
+    completed: true
   }
 };
-const taskKey = "a";
 const mockDispatch = jest.fn(() => {});
 
-beforeEach(() => {
-  render(
-    <TasksContext.Provider value={[state, mockDispatch]}>
-      <Task taskKey={taskKey} />
-    </TasksContext.Provider>
-  );
-});
+describe("<Task /> (Non-complete task)", () => {
+  const taskKey = "a";
 
-afterEach(() => {
-  cleanup();
-  jest.clearAllMocks();
-});
+  beforeEach(() => {
+    render(
+      <TasksContext.Provider value={[state, mockDispatch]}>
+        <Task taskKey={taskKey} />
+      </TasksContext.Provider>
+    );
+  });
+  
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
 
-describe("<Task />", () => {
   it("should render a textbox for entering a task", () => {
     // Arrange
     const taskInput = screen.getByTestId("task-label");
@@ -106,5 +111,42 @@ describe("<Task />", () => {
     // Assert
     const taskInput = screen.getByTestId("task-label");
     expect(taskInput).toBeDefined();
+  });
+
+  it("should call dispatch when clicking complete", () => {
+    // Arrange
+    const taskComplete = screen.getByTestId("task-complete");
+
+    // Act
+    fireEvent.click(taskComplete);
+
+    // Assert
+    expect(mockDispatch.mock.calls.length).toBe(1);
+  });
+});
+
+describe("<Task /> (Completed task)", () => {
+  const taskKey = "b";
+
+  beforeEach(() => {
+    render(
+      <TasksContext.Provider value={[state, mockDispatch]}>
+        <Task taskKey={taskKey} />
+      </TasksContext.Provider>
+    );
+  });
+  
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
+
+  it("should render a textbox for entering a task", () => {
+    // Arrange
+    const expected = "completed";
+    const task = screen.getByTestId("task");
+
+    // Assert
+    expect(task.classList.contains(expected)).toBe(true);
   });
 });

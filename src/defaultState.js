@@ -13,7 +13,7 @@ export const defaultState = {
   },
   "d": {
     task: "mark a task as complete",
-    completed: false
+    completed: true
   },
   "e": {
     task: "mark a completed task as incomplete",
