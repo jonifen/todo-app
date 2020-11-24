@@ -97,4 +97,30 @@ describe("TasksReducer", () => {
     // Assert
     expect(actual).toStrictEqual(expected);
   });
+
+  it("should return state with a completed item", () => {
+    // Arrange
+    const currentState = {
+      "abc": {
+        value: "an existing task",
+        completed: false
+      }
+    };
+    const action = {
+      type: "complete",
+      key: "abc"
+    };
+    const expected = {
+      "abc": {
+        value: "an existing task",
+        completed: true
+      }
+    };
+
+    // Act
+    const actual = tasksReducer(currentState, action);
+
+    // Assert
+    expect(actual).toStrictEqual(expected);
+  });
 });

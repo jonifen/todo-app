@@ -22,3 +22,10 @@ export const editTaskInList = (key, value) => (
     value
   }
 );
+
+export const completeTaskInList = (key) => (
+  {
+    type: "complete",
+    key
+  }
+);
