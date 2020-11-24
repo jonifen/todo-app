@@ -14,3 +14,11 @@ export const deleteTaskFromList = (key) => (
     key
   }
 );
+
+export const editTaskInList = (key, value) => (
+  {
+    type: "edit",
+    key,
+    value
+  }
+);
