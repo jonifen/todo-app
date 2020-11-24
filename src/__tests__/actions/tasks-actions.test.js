@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { addTaskToList } from "../../actions/tasks-actions";
+import { addTaskToList, deleteTaskFromList } from "../../actions/tasks-actions";
 
 jest.mock("uuid");
 
@@ -22,6 +22,22 @@ describe("Tasks Actions", () => {
 
     // Act
     const actual = addTaskToList(input);
+
+    //Assert
+    expect(actual).toStrictEqual(expected);
+  });
+
+  test("should return a delete object suitable for reducer dispatch", () => {
+    // Arrange
+    const input = "a";
+
+    const expected = {
+      type: "delete",
+      key: input
+    }
+
+    // Act
+    const actual = deleteTaskFromList(input);
 
     //Assert
     expect(actual).toStrictEqual(expected);

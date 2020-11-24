@@ -7,3 +7,10 @@ export const addTaskToList = (value) => (
     value
   }
 );
+
+export const deleteTaskFromList = (key) => (
+  {
+    type: "delete",
+    key
+  }
+);

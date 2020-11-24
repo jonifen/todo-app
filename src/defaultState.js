@@ -1,7 +1,7 @@
 export const defaultState = {
   "a1": {
     task: "add a new task",
-    completed: false
+    completed: true
   },
   "b": {
     task: "delete a task",

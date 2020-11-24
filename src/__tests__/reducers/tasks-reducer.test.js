@@ -45,4 +45,26 @@ describe("TasksReducer", () => {
     // Assert
     expect(actual).toStrictEqual(expected);
   });
+
+  it("should return empty state if deleting an item", () => {
+    // Arrange
+    const currentState = {
+      "abc": {
+        value: "Task that is no longer going to happen",
+        completed: false
+      }
+    };
+    const action = {
+      type: "delete",
+      key: "abc",
+      value: {}
+    };
+    const expected = {};
+
+    // Act
+    const actual = tasksReducer(currentState, action);
+
+    // Assert
+    expect(actual).toStrictEqual(expected);
+  });
 });
