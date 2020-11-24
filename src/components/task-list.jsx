@@ -1,8 +1,11 @@
 import React from "react";
+import NewTask from "./new-task.jsx";
 
 const TaskList = () => {
   return (
-    <div>Task List</div>
+    <div>
+      <NewTask />
+    </div>
   );
 };
 
