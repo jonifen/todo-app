@@ -22,7 +22,7 @@ const NewTask = () => {
   };
 
   return (
-    <div data-testid="new-task">
+    <div data-testid="new-task" className="task task-edit">
       <input
         data-testid="new-task-input"
         type="text"
@@ -31,8 +31,8 @@ const NewTask = () => {
         onBlur={onChangeValueEvent}
         placeholder="Add new task"
       ></input>
-      <div className="task-action-container">
-        <span data-testid="new-task-add" onClick={onAddClickEvent}>Add</span>
+      <div className="icon-container">
+        <span data-testid="new-task-add" className="icon icon-plus" onClick={onAddClickEvent}></span>
       </div>
     </div>
   );

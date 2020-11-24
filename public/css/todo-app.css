@@ -1,3 +1,96 @@
+:root {
+  --backgroundColour: #00928f;
+  --containerColour: #eeeeee;
+  --darklightColour: #004948;
+  --headerBackgroundColour: #3a4757;
+  --completedColour: #00e7e3;
+}
+
+html {
+  background-color: var(--backgroundColour);
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70rem;
+  background-color: var(--containerColour);
+  border-left: 2px var(--darklightColour) solid;
+  border-right: 2px var(--darklightColour) solid;
+}
+
+.task {
+  position: relative;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.task:not(last-sibling) {
+  border-bottom: 1px solid var(--darklightColour);
+}
+
+.task-edit {
+  background-color: #fff;
+  padding: 0.2rem;
+  height: 2.6rem;
+}
+
+.task-edit input {
+  padding: 0.5rem;
+  width: calc(100% - 6rem);
+  font-size: 1.2rem;
+  border: 1px var(--darklightColour) solid;
+}
+
 .completed {
-  text-decoration: line-through;
+  background-color: var(--completedColour);
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.icon-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.7rem;
+}
+.icon-container .icon {
+  margin-left: 0.5rem;
+}
+
+header {
+  padding: 1rem;
+  border-bottom: 1px dashed var(--darklightColour);
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 55rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 50rem;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    border: 0;
+  }
 }

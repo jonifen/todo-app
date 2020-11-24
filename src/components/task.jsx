@@ -32,7 +32,7 @@ const Task = ({ taskKey }) => {
 
   if (editMode) {
     return (
-      <div data-testid="task-edit" className={completedClassName}>
+      <div data-testid="task-edit" className="task task-edit">
         <input
           data-testid="task-edit-input"
           type="text"
@@ -41,15 +41,15 @@ const Task = ({ taskKey }) => {
           onBlur={onChangeValueEvent}
         ></input>
         <div className="icon-container">
-          <span data-testid="task-edit-save" onClick={onSaveClickEvent}>save</span>
-          <span data-testid="task-edit-cancel" onClick={onCancelEditEvent}>cancel</span>
+          <span data-testid="task-edit-save" className="icon icon-checkmark" onClick={onSaveClickEvent}></span>
+          <span data-testid="task-edit-cancel" className="icon icon-cross" onClick={onCancelEditEvent}></span>
         </div>
       </div>
     );
   }
 
   return (
-    <div data-testid="task" className={completedClassName}>
+    <div data-testid="task" className={`task ${completedClassName}`}>
       <input
         id={`${taskKey}-complete`}
         data-testid="task-complete"
@@ -62,8 +62,8 @@ const Task = ({ taskKey }) => {
         {task.task}
       </label>
       <div className="icon-container">
-        <span data-testid="task-edit" onClick={() => { setEditMode(true); }}>edit</span>
-        <span data-testid="task-delete" onClick={() => { dispatch(deleteTaskFromList(taskKey)); }}>delete</span>
+        <span data-testid="task-edit" className="icon icon-pencil" onClick={() => { setEditMode(true); }}></span>
+        <span data-testid="task-delete" className="icon icon-bin2" onClick={() => { dispatch(deleteTaskFromList(taskKey)); }}></span>
       </div>
     </div>
   );

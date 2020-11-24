@@ -10,7 +10,7 @@ const App = () => {
   return (
     <React.StrictMode>
       <TasksContext.Provider value={[tasks, dispatch]}>
-        <div>
+        <div className="container">
           <header>
             <h1>Todo App</h1>
           </header>

@@ -7,7 +7,7 @@ const TaskList = () => {
   const [tasks] = useContext(TasksContext);
 
   return (
-    <div>
+    <div data-testid="task-list" className="list">
       <NewTask />
       {
         tasks && Object.keys(tasks).map(key => (
