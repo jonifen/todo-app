@@ -5,7 +5,7 @@ export const defaultState = {
   },
   "b": {
     task: "delete a task",
-    completed: false
+    completed: true
   },
   "c": {
     task: "edit a task",
