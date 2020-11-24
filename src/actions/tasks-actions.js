@@ -23,9 +23,9 @@ export const editTaskInList = (key, value) => (
   }
 );
 
-export const completeTaskInList = (key) => (
+export const toggleTaskCompletionInList = (key) => (
   {
-    type: "complete",
+    type: "toggle-completion",
     key
   }
 );

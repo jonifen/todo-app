@@ -107,13 +107,39 @@ describe("TasksReducer", () => {
       }
     };
     const action = {
-      type: "complete",
+      type: "toggle-completion",
       key: "abc"
     };
     const expected = {
       "abc": {
         value: "an existing task",
         completed: true
+      }
+    };
+
+    // Act
+    const actual = tasksReducer(currentState, action);
+
+    // Assert
+    expect(actual).toStrictEqual(expected);
+  });
+
+  it("should return state with a incomplete item", () => {
+    // Arrange
+    const currentState = {
+      "abc": {
+        value: "an existing task",
+        completed: true
+      }
+    };
+    const action = {
+      type: "toggle-completion",
+      key: "abc"
+    };
+    const expected = {
+      "abc": {
+        value: "an existing task",
+        completed: false
       }
     };
 

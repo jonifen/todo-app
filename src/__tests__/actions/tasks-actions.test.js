@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { addTaskToList, deleteTaskFromList, editTaskInList, completeTaskInList } from "../../actions/tasks-actions";
+import { addTaskToList, deleteTaskFromList, editTaskInList, toggleTaskCompletionInList } from "../../actions/tasks-actions";
 
 jest.mock("uuid");
 
@@ -61,17 +61,17 @@ describe("Tasks Actions", () => {
     expect(actual).toStrictEqual(expected);
   });
 
-  test("should return a complete object suitable for reducer dispatch", () => {
+  test("should return a toggle-completion object suitable for reducer dispatch", () => {
     // Arrange
     const key = "a";
 
     const expected = {
-      type: "complete",
+      type: "toggle-completion",
       key
     };
 
     // Act
-    const actual = completeTaskInList(key);
+    const actual = toggleTaskCompletionInList(key);
 
     //Assert
     expect(actual).toStrictEqual(expected);

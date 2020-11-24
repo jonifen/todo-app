@@ -5,10 +5,10 @@ export const tasksReducer = (state, action) => {
     newState[action.key] = action.value;
   } else if (action.type === "delete") {
     delete newState[action.key];
-  } else if (action.type === "complete") {
+  } else if (action.type === "toggle-completion") {
     newState[action.key] = {
       ...newState[action.key],
-      completed: true
+      completed: !newState[action.key].completed
     };
   }
 

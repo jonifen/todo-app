@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import TasksContext from "../contexts/tasks-context";
-import { editTaskInList, completeTaskInList, deleteTaskFromList } from "../actions/tasks-actions";
+import { editTaskInList, deleteTaskFromList, toggleTaskCompletionInList } from "../actions/tasks-actions";
 
 const Task = ({ taskKey }) => {
   const [tasks, dispatch] = useContext(TasksContext);
@@ -50,11 +50,18 @@ const Task = ({ taskKey }) => {
 
   return (
     <div data-testid="task" className={completedClassName}>
-      <span data-testid="task-label">
+      <input
+        id={`${taskKey}-complete`}
+        data-testid="task-complete"
+        type="checkbox"
+        checked={task.completed}
+        onChange={() => { dispatch(toggleTaskCompletionInList(taskKey)); }}
+        value={task.task}
+      />
+      <label htmlFor={`${taskKey}-complete`} data-testid="task-label">
         {task.task}
-      </span>
+      </label>
       <div className="icon-container">
-        <span data-testid="task-complete" onClick={() => { dispatch(completeTaskInList(taskKey)); }}>complete</span>
         <span data-testid="task-edit" onClick={() => { setEditMode(true); }}>edit</span>
         <span data-testid="task-delete" onClick={() => { dispatch(deleteTaskFromList(taskKey)); }}>delete</span>
       </div>

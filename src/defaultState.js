@@ -17,7 +17,7 @@ export const defaultState = {
   },
   "e": {
     task: "mark a completed task as incomplete",
-    completed: false
+    completed: true
   },
   "f": {
     task: "view all tasks (toggle completed?)",
