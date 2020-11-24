@@ -9,7 +9,7 @@ export const defaultState = {
   },
   "c": {
     task: "edit a task",
-    completed: false
+    completed: true
   },
   "d": {
     task: "mark a task as complete",
