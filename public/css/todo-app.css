@@ -47,6 +47,12 @@ body {
   border: 1px var(--darklightColour) solid;
 }
 
+.filter {
+  position: relative;
+  padding: 0.5rem;
+  text-align: right;
+}
+
 .completed {
   background-color: var(--completedColour);
 }

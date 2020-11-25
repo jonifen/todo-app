@@ -21,6 +21,6 @@ export const defaultState = {
   },
   "f": {
     task: "view all tasks (toggle completed?)",
-    completed: false
+    completed: true
   }
 };
